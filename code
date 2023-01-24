@@ -1,0 +1,386 @@
+<!--INCLUSIEF ON-CLICK AANPASSING-->
+<div class="row kpn-padded-row gray-background" style="padding-top: 40px;">
+    <style>
+        .kpn-ugs {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: 1fr;
+            grid-template-columns: 1fr;
+        }
+        @media screen and (min-width: 768px) {
+            .kpn-ugs {
+                -ms-grid-columns: (1fr) [4];
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+        }
+        .kpn-ugs__button {
+            margin-bottom: 16px;
+        }
+        .kpn-ugs__button a {
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: auto 16px;
+            grid-template-columns: auto 16px;
+            -ms-flex-line-pack: center;
+            align-content: center;
+            padding: 0 8px 0 16px;
+            background-color: #fff;
+            min-height: 46px;
+            text-decoration: none;
+            min-width: 0;
+            border-radius: 12px;
+            background-color: #fff;
+            overflow: hidden;
+            -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.07), 0 1px 10px 0 rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.07), 0 1px 10px 0 rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        }
+        .kpn-ugs__column {
+            min-width: 0;
+            border-radius: 12px;
+            background-color: #fff;
+            overflow: hidden;
+            -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.07), 0 1px 10px 0 rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.07), 0 1px 10px 0 rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        }
+        .kpn-ugs__column a > * {
+            pointer-events: none;
+        }
+        .kpn-ugs__list {
+            padding: 0;
+        }
+        .kpn-ugs__list li {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            margin-bottom: 0;
+        }
+        .kpn-ugs__list li:hover a {
+            background-color: #090;
+            color: #fff;
+        }
+        .kpn-ugs__list li:hover a > .ui-icon {
+            color: #fff;
+        }
+        .kpn-ugs__list li:hover a::after {
+            background-color: #090 !important;
+        }
+        .kpn-ugs__list li a {
+            position: relative;
+            display: -ms-grid;
+            display: grid;
+            -ms-grid-columns: auto 16px;
+            grid-template-columns: auto 16px;
+            justify-items: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 100%;
+            min-height: 48px;
+            padding: 8px 8px;
+            text-decoration: none;
+            color: #333;
+        }
+        .kpn-ugs__list li a span {
+            -ms-grid-column-align: start;
+            justify-self: start;
+        }
+        .kpn-ugs__list li a .ui-icon {
+            color: #090;
+        }
+        .kpn-ugs__list li a .ui-chevron-right,
+        .kpn-ugs__list li a .ui-lock-closed {
+            color: #d3d3d3;
+        }
+        .kpn-ugs__list li a.selected {
+            background-color: #090;
+            color: #fff;
+        }
+        .kpn-ugs__list li a.selected > .ui-icon {
+            color: #fff;
+        }
+        .kpn-ugs__list li a.selected::after {
+            background-color: #090 !important;
+        }
+        .kpn-ugs__list li:not(:last-child) a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 1px;
+            -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+            background-color: #d3d3d3;
+        }
+        .kpn-ugs__list--icons li {
+            width: 100%;
+        }
+        .kpn-ugs__list--icons li a {
+            -ms-grid-columns: 48px auto 16px;
+            grid-template-columns: 48px auto 16px;
+            padding-left: 0;
+        }
+        .kpn-ugs__list--icons li:not(:last-child) a::after {
+            width: 100%;
+            -webkit-transform: translateX(48px);
+            transform: translateX(48px);
+        }
+    </style>
+
+    <div class="col-xs-12">
+        <h2 style="color: #333;">
+            <span class="font-weight-bold">Waar gaat je vraag over?</span><br>
+            Vind zelf je antwoord
+        </h2>
+    </div>
+
+    <script>
+        const targetReadyContact = () => {
+            const t = (t) => {
+                    t.classList.contains("hidden") && t.classList.remove("hidden");
+                },
+                e = document.querySelector('form[name="kpn-id-login"]'),
+                n = document.querySelectorAll('.kpn-ugs__list a:not([href="#_"])'),
+                o = document.querySelector(".ugs-contact");
+            e || t(o),
+                n.forEach((e) => {
+                    e.addEventListener("click", () => {
+                        t(o);
+                    });
+                });
+        };
+        "loading" !== document.readyState ? targetReadyContact() : document.addEventListener("DOMContentLoaded", targetReadyContact);
+    </script>
+    
+    <!--1e kolom links-->
+
+    <div class="col-xs-12 kpn-ugs">
+        <div class="kpn-ugs__column kpn-ugs__column--1" data-column="1">
+            <ul class="kpn-ugs__list kpn-ugs__list--icons">
+                <li>
+                    <a href="#_" data-target="101"><i class="ui-icon ui-account"></i><span>Registreren </span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="102"><i class="ui-icon ui-help"></i><span>Problemen bij inloggen </span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="103"><i class="ui-icon ui-euro"></i><span>Factuur &amp; betalen </span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="104"><i class="ui-icon ui-settings"></i><span>Beheer MijnKPN Zakelijk </span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="105"><i class="ui-icon ui-edit"></i><span>Wijzigingen doorgeven </span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+            </ul>
+        </div>
+        
+        <!--2e kolom links-->
+        
+        <div class="hidden-sm hidden-md hidden-lg"> <br> </div>
+        <div class="kpn-ugs__column kpn-ugs__column--2" data-column="2">    
+            
+            <ul data-list="101" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <li>
+                    <a href="#_" data-target="201"><span>Registreren voor KPN EEN MKB</span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="202"><span>Registreren voor Kleinzakelijk of Privé</span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+            </ul>
+            
+            <ul data-list="102" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <li>
+                    <a href="#_" data-target="203"><span>Geen SMS ontvangen</span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="204"><span>Geen e-mail ontvangen</span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="205"><span>Foutmelding ontvangen</span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+            </ul>
+            
+            
+            <ul data-list="103" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <li>
+                    <a href="/zakelijk/mijnkpn/kpn-een-mkb/kan-facturen-niet-inzien.htm"><span>Factuur bekijken &amp; downloaden</span></a>
+                </li>
+                <li>
+                    <a href="/zakelijk/mijnkpn/kpn-een-mkb/geen-factuuranalyse.htm"><span>Factuuranalyse</span></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="206"><span>Rekeningnummer wijzigen</span></a>
+                </li>
+            </ul>
+            <ul data-list="104" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <li>
+                    <a href="#_" data-target="207"><span>Toestelbeheer</span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="208"><span>Accountbeheer</span><i class="ui-icon ui-chevron-right"></i></a>
+                </li>
+            </ul>
+            <ul data-list="105" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <li>
+                    <a href="/zakelijk/service/verhuizing-doorgeven.htm"><span>Verhuizing doorgeven</span></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="209"><span>E-mailadres wijzigen</span></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="210" ><span>Rekeningnummer wijzigen</span></a>
+                </li>
+                <li>
+                    <a href="/zakelijk/service/contractovername/vast.htm"><span>Contractovername regelen</span></a>
+                </li>
+                <li>
+                    <a href="/zakelijk/opzeggen.htm"><span>Contract opzeggen</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="hidden-sm hidden-md hidden-lg"> <br> </div>
+        <div class="kpn-ugs__column kpn-ugs__column--3" data-column="3">
+            <ul data-list="201" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding: 16px;">Je hoeft je niet te registreren omdat wij al een account voor je hebben aangemaakt. <br><br>Jouw inloggegevens heb je via e-mail ontvangen.</p>
+            </ul>   
+            
+            <ul data-list="202" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding:16px;">Heb je Kleinzakelijk of een privé abonnement? Dan registreer je zelf via onze website.<br><br><br>
+                    <a class="button is-primary" href="https://inloggen.kpn.com/" onclick="window.open('https://inloggen.kpn.com/')" style="background-color: #09f;text-align:center;color: #fff;">Registreren</a>
+                </p>
+            </ul>   
+            
+            <ul data-list="203" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding: 16px;">Afhankelijk van jouw instellingen kan je met behulp van een SMS je wachtwoord wijzigen of inloggen. <br> Ontvang je binnen 5 minuten geen SMS&quest; Vraag dan jouw beheerder om jouw telefoonnummer te controleren. <br><br><br>     
+                    <a class="button is-primary" href="/zakelijk/mijnkpn/hulp.htm#/Hulp-bij-inloggen---mkz/zm-mkz-sms-t" onclick="window.open('/zakelijk/mijnkpn/hulp.htm#/Hulp-bij-inloggen---mkz/zm-mkz-sms-t')" style="background-color: #09f;text-align:center;color: #fff;">Meer informatie</a>
+                </p>
+            </ul>
+             <ul data-list="204" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding: 16px;">Ontvang je bij het wijzigen van jouw wachtwoord geen verificatiecodes via e-mail? <br><br> 1. Controleer je spambox <br> 2. Wacht 15 minuten <br> 3. Controleer het e-mailadres <br><br>     
+                    <a class="button is-primary" href="/zakelijk/mijnkpn/hulp.htm#/Hulp-bij-inloggen---mkz/zm-mkz-mail-t" onclick="window.open('/zakelijk/mijnkpn/hulp.htm#/Hulp-bij-inloggen---mkz/zm-mkz-mail-t')" style="background-color: #09f;text-align:center;color: #fff;">Meer informatie</a>
+                </p>
+            </ul>
+            <ul data-list="205" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding: 16px;">Ontvang je een foutmelding bij het inloggen?<br> <br> 1.Verwijder de cookies <br> 2. Gebruik de juiste browser <br><br>     
+                    <a class="button is-primary" href="/zakelijk/mijnkpn/hulp.htm#/Hulp-bij-inloggen---mkz/zm-mkz-fout-t" onclick="window.open('/zakelijk/mijnkpn/hulp.htm#/Hulp-bij-inloggen---mkz/zm-mkz-fout-t')" style="background-color: #09f;text-align:center;color: #fff;">Meer informatie</a>
+                </p>
+            </ul>
+            
+            <ul data-list="206" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding: 16px;">Het rekeningnummer kun je wijzigen in MijnKPN Zakelijk<br><br>     
+                    <a class="button is-primary" href="https://mijnkpnzakelijk.force.com/mijnkpnzakelijk/s/administratiekpneen" onclick="window.open('https://mijnkpnzakelijk.force.com/mijnkpnzakelijk/s/administratiekpneen')" style="background-color: #09f;text-align:center;color: #fff;">Inloggen</a>
+                </p>
+            </ul>
+             
+            <ul data-list="207" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <li>
+                    <a href="/zakelijk/service/mobiel/simkaart.htm" onclick="window.open('/zakelijk/service/mobiel/simkaart.htm')"><span>Pukcode inzien</span></a>
+                </li>
+                <li>
+                    <a href="/zakelijk/service/mobiel/simkaart.htm" onclick="window.open('/zakelijk/service/mobiel/simkaart.htm')"><span>Simkaart activeren &amp; blokkeren</span></a>
+                </li>
+                <li>
+                    <a href="/zakelijk/service/telefonie/doorschakelen-en-voicemail.htm" onclick="window.open('/zakelijk/service/telefonie/doorschakelen-en-voicemail.htm')"><span>Voicemail &amp; doorschakeling instellen</span></a>
+                </li>
+                <li>
+                    <a href="/zakelijk/service/televisie/instellen.htm" onclick="window.open('/zakelijk/service/televisie/instellen.htm')"><span>Televisie instellen</span></a>
+                </li>
+            </ul>
+            <ul data-list="208" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <li>
+                    <a href="/zakelijk/mijnkpn/kpn-een-mkb/kan-bedrijfsgegevens-niet-inzien.htm" onclick="window.open('/zakelijk/service/televisie/instellen.htm')"><span>Kan bedrijfsgegevens niet inzien</span></a>
+                </li>
+                <li>
+                    <a href="/zakelijk/mijnkpn/kpn-een-mkb/gebruiker-toevoegen.htm" onclick="window.open('/zakelijk/mijnkpn/kpn-een-mkb/gebruiker-toevoegen.htm')"><span>Nieuwe gebruiker toevoegen</span></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="301"><span>Beheerrechten toewijzen</span></a>
+                </li>
+                <li>
+                    <a href="#_" data-target="302"><span>Extra inlogverificatie instellen</span></a>
+                </li>
+            </ul>
+            
+            <ul data-list="209" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding: 16px;">Het e-mailadres kun je wijzigen in MijnKPN Zakelijk<br><br>     
+                    <a class="button is-primary" href="https://mijnkpnzakelijk.force.com/mijnkpnzakelijk/s/administratiekpneen" onclick="window.open('https://mijnkpnzakelijk.force.com/mijnkpnzakelijk/s/administratiekpneen')" style="background-color: #09f;text-align:center;color: #fff;">Inloggen</a>
+                </p>
+            </ul>
+            
+            <ul data-list="210" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding: 16px;">Het rekeningnummer kun je wijzigen in MijnKPN Zakelijk<br><br>     
+                    <a class="button is-primary" href="https://mijnkpnzakelijk.force.com/mijnkpnzakelijk/s/administratiekpneen" onclick="window.open('https://mijnkpnzakelijk.force.com/mijnkpnzakelijk/s/administratiekpneen')" style="background-color: #09f;text-align:center;color: #fff;">Inloggen</a>
+                </p>
+            </ul>
+            
+        </div> 
+        
+        <div class="hidden-sm hidden-md hidden-lg"> <br> </div>
+        <div class="kpn-ugs__column kpn-ugs__column--4" data-column="4">
+            <ul data-list="301" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding: 16px;"> In MijnKPN Zakelijk is het mogelijk om meerdere toegangsbeheerders aan te maken. Een toegangsbeheerder kan zelf gebruikers aanmaken en beheren. Dat is gemakkelijk wanneer de toegangs beheerder zelf op vakantie is of je graag per afdeling een toegangsbeheerder wil aanwijzen.<br><br>
+                <a class="button is-primary" href="/zakelijk/mijnkpn/toegangs-beheerrechten-toewijzen.htm" onclick="/zakelijk/mijnkpn/toegangs-beheerrechten-toewijzen.htm')" style="background-color: #09f;text-align:center;color: #fff;">Meer informatie</a>
+                </p>
+            </ul>  
+            
+            <ul data-list="302" class="kpn-ugs__list hidden">
+                <div class="kpn-ugs__button-previous">
+                    <a href="#_" class="font-weight-bold text-kpn-green hidden-sm hidden-md hidden-lg"><i class="ui-icon ui-chevron-left"></i><span>Vorige</span></a>
+                </div>
+                <p style="padding: 16px;"> Met Multi-Factor Authenticatie voeg je een extra beveiliging toe aan elke inlogpoging. Dit maakt het moeilijker voor cybercriminelen om bij jouw gegevens te komen.  <br><br>
+                <a class="button is-primary" href="/zakelijk/mijnkpn/multi-factor-authenticatie.htm" onclick="/zakelijk/mijnkpn/multi-factor-authenticatie.htm')" style="background-color: #09f;text-align:center;color: #fff;">Meer informatie</a>
+                </p>
+            </ul>  
+        </div>
+    </div>
+</div>
